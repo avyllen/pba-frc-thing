@@ -2,10 +2,15 @@
 <html lang="en">
 <head>
 
-  <!-- font used -->
+  <!-- fonts used -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bitcount+Prop+Single:wght@100..900&display=swap" rel="stylesheet">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Mulish:ital,wght@0,200..1000;1,200..1000&display=swap" rel="stylesheet">
+
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Lunas Robotics Scouting App 2026test1</title>
@@ -23,11 +28,18 @@
 
     *{box-sizing:border-box;font-family:'Bitcount Prop Single'}
     body{margin:0;background:linear-gradient(45deg,#850808 0%, #2f0101 100%);color:#ffffff;padding:20px;}
-    h1{text-align:center;margin-bottom:20px;}
-    h2{text-align:center;margin-bottom:20px;}
-    h3{margin-top:5px;}
+    h1{
+      text-align:center;margin-bottom:20px;}
+    h2{
+      text-align:center;margin-bottom:20px;}
+
+    h3{margin-top:10px; margin-bottom:10px;}
+
+    h4{text-align:center;margin-bottom:20px;
+    font-weight:400}
 
     header{
+
       display:flex;
       align-items:center;
       gap:16px;
@@ -47,13 +59,20 @@
     }
 
     .subtitle{
-    color:var(--muted);font-size:13px;}
+    color:var(--muted);font-size:13px;
+    
+  }
+
+
+
     nav{display:flex;gap:8px;
     }
 
 
 
-    nav button{background:transparent;border:1px solid transparent;padding:8px 12px;border-radius:8px;color:var(--muted);cursor:pointer;}
+
+
+    nav button{background:transparent;border:1px solid transparent;padding:9px 12px;border-radius:8px;color:var(--muted);cursor:pointer;}
     nav button.active{background:var(--glass);border-color:rgba(255,255,255,0.04);color:#ffffff;}
 
     /* ==========================
@@ -67,6 +86,7 @@
       margin-top:20px;
     }
     .card{
+      font-size:30px;font-weight:700;
       background:var(--card);
       flex-direction: column;
       padding:20px;
@@ -79,12 +99,14 @@
 
 
     label{
+      font-family: Mulish;
       display:block;
       font-size:20px;
       color:var(--muted);
       margin-bottom:8px;
     }
     input, select, textarea{
+      font-family: Mulish;
       width:100%;
       padding:8px 10px;
       border-radius:8px;
@@ -98,12 +120,12 @@
     button.primary{
       background:linear-gradient(45deg,#ddaeae 0%, #ffe2e2 100%);
       color:black;
-      border:none;
-      padding:10px 12px;
+      border:10px;
+      padding:18px 19px;
       border-radius:10px;
       cursor:pointer;
-      font-weight:bold;
-      margin-right:8px;
+      font-weight:500;
+      margin-right:6px;
     }
     .toggle-label{
       display:flex;
@@ -113,6 +135,15 @@
       margin-bottom:10px;
     }
 
+    .dir-label{
+      display:flex;
+      align-items:center;
+      gap:8px;
+      cursor:pointer;
+      margin-bottom:10px;
+      text-align: center;
+      font-size:20px;font-weight:600;
+    }
     .notice{
       background:linear-gradient(90deg, rgba(255,255,255,0.06), rgba(14,165,233,0.03));
       padding:10px;
@@ -142,16 +173,15 @@
       <h1>
         Lunas Robotics Scouting App
       </h1>
-      </div>
-     <pre>
-    Directions: 
-    1. Enter scouting information
-    2. Click save entry for each team
-    3. Once connected to LTE or Internet (outside of the arena),
-        click "(figuring out how to sync data once connected )"
-      </pre>
-    </div>
-
+      <div class="dir-label">
+   <label>
+      Directions:<br>
+      1. Enter scouting information <br>
+      2. Click save entry for each team 
+      3. Once connected to LTE or Internet (outside of the arena),
+      click "(figuring out how to sync data once connected )"<br></label>
+      </label>
+ 
     </div>
 
 <!-- logo
@@ -162,7 +192,8 @@
     </div>
   </header> 
 
-  <!-- cards  -->
+
+  cards  -->
   <div class="cards-container">
 
     <!-- prematch -->
@@ -176,12 +207,12 @@
       <input type="number" id="teamNumber" style="font-size: 20px;" placeholder="e.g 3882">
       <label for="label">Starting Position</label>
       <select id="startPosition" style="font-size: 20px;">
-          <option value="processor">Processor</option>
+          <option value="processor" >Processor</option>
         <option value="middle">Middle</option>
       <option value="other">Other</option>
       </select>
       <label>No Show</label>
-      <select id="noShow">
+      <select id="noShow" style="font-size: 20px;">
       <option value="no">No</option>
         <option value="yes">Yes</option>
       <label class="toggle-label">
@@ -192,23 +223,23 @@
     <div class="card">
       <h3>Autonomous</h3>
       <label>Moved</label>
-      <select id="Moved">
+      <select id="Moved" style="font-size: 20px;">
       <option value="no">No</option>
       <option value="Yes">Yes</option>
       </select>
       </label>
       <label>Coral L1 Scored</label>
-      <input type="text" id="coralL1" placeholder="0">
+      <input type="text" id="coralL1" placeholder="0" style="font-size: 20px;">
       <label>Coral L2 Scored</label>
-      <input type="text" id="coralL2" placeholder="0">
+      <input type="text" id="coralL2" placeholder="0" style="font-size: 20px;">
       <label>Coral L3 Scored</label>
-      <input type="text" id="coralL3" placeholder="0">
+      <input type="text" id="coralL3" placeholder="0" style="font-size: 20px;">
       <label>Coral L4 Scored</label>
-      <input type="text" id="coralL4" placeholder="0">
+      <input type="text" id="coralL4" placeholder="0" style="font-size: 20px;">
       <label>Barge Scored</label>
-      <input type="text" id="bargeAuto" placeholder="0">
+      <input type="text" id="bargeAuto" placeholder="0" style="font-size: 20px;">
       <label>Processor Scored</label>
-      <input type="text" id="processorAuto" placeholder="0">
+      <input type="text" id="processorAuto" placeholder="0" style="font-size: 20px;">
     </div>
 
     <!-- teleop -->
@@ -216,26 +247,26 @@
       <div class="card">
       <h3>Teleop</h3>
       <label>Pickup Location</label>
-      <select id="pickupLocation">
+      <select id="pickupLocation" style="font-size: 20px;">
         <option value="ground">Ground</option>
         <option value="human">Human Player</option>
         <option value="both">Both</option>
         <option value="none">None</option>
       </select>
       <label>Coral L1 Scored</label>
-      <input type="text" id="coralL1" placeholder="0">
+      <input type="text" id="coralL1" placeholder="0" style="font-size: 20px;">
       <label>Coral L2 Scored</label>
-      <input type="text" id="coralL2" placeholder="0">
+      <input type="text" id="coralL2" placeholder="0" style="font-size: 20px;">
       <label>Coral L3 Scored</label>
-      <input type="text" id="coralL3" placeholder="0">
+      <input type="text" id="coralL3" placeholder="0" style="font-size: 20px;">
       <label>Coral L4 Scored</label>
-      <input type="text" id="coralL4" placeholder="0">
+      <input type="text" id="coralL4" placeholder="0" style="font-size: 20px;">
       <label>Barge Scored</label>
-      <input type="text" id="bargeAuto" placeholder="0">
+      <input type="text" id="bargeAuto" placeholder="0" style="font-size: 20px;">
       <label>Processor Scored</label>
-      <input type="text" id="processorAuto" placeholder="0">
+      <input type="text" id="processorAuto" placeholder="0" style="font-size: 20px;">
       <label>Strategy</label>
-      <select id="strategy">
+      <select id="strategy" style="font-size: 20px;">
         <option value="defense">Defense</option>
         <option value="offense">Offense</option>
       </select>
@@ -245,31 +276,31 @@
     <div class="card">
       <h3>Endgame</h3>
       <label>End Position</label>
-      <select id="endPosition">
+      <select id="endPosition" style="font-size: 20px;">
         <option value="notParked">Not Parked</option>
         <option value="parked">Parked</option>
         <option value="deepClimb">Deep Climb</option>
         <option value="shallowClimb">Shallow Climb</option>
       </select>
      <label>Robot Died</label>
-      <select id="robotDied">
+      <select id="robotDied" style="font-size: 20px;">
         <option value="no">No</option>
         <option value="Yes">Yes</option>
     </select>
      <label>Unstable</label>
-        <select id="robotDied">
+        <select id="unstable" style="font-size: 20px;">
           <option value="no">No</option>
           <option value="Yes">Yes</option>
       <label class="toggle-label">
       </select>
       <h3>Comments</h3>
-      <textarea id="comments" rows="9" placeholder="Type additional notes here"></textarea>
+      <textarea id="comments" rows="5" placeholder="Type additional notes here" style="font-size: 20px;"></textarea>
 
       <!-- Buttons -->
       <div>
-        <button class="primary" id="saveEntry">Save Entry</button>
-        <button class="primary" id="share">Share</button>
-        <button class="primary" id="deleteEntry">Delete</button>
+        <button class="primary" id="saveEntry" style="font-size:15px;">Save Entry</button>
+        <button class="primary" id="share" style="font-size:15px;">Share</button>
+        <button class="primary" id="deleteEntry" style="font-size:15px;">Delete</button>
       </div>
     </div>
     </div>
