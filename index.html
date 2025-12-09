@@ -24,7 +24,8 @@
     *{box-sizing:border-box;font-family:'Bitcount Prop Single'}
     body{margin:0;background:linear-gradient(45deg,#850808 0%, #2f0101 100%);color:#ffffff;padding:20px;}
     h1{text-align:center;margin-bottom:20px;}
-    h2{margin-top:0;}
+    h2{text-align:center;margin-bottom:20px;}
+    h3{margin-top:5px;}
 
     header{
       display:flex;
@@ -34,15 +35,13 @@
       background:linear-gradient(90deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
       border-bottom:1px solid rgba(255,255,255,0.03);
     }
-    .logo{
-      width:100px;
-      height:90px;
-      border-radius:8px;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      font-weight:700;
-    }
+    .top-logo {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;   /* optional spacing */
+  margin-bottom: 10px;
+}
     .title{
      font-size:30px;font-weight:700;
     }
@@ -51,6 +50,7 @@
     color:var(--muted);font-size:13px;}
     nav{display:flex;gap:8px;
     }
+
 
 
     nav button{background:transparent;border:1px solid transparent;padding:8px 12px;border-radius:8px;color:var(--muted);cursor:pointer;}
@@ -80,7 +80,7 @@
 
     label{
       display:block;
-      font-size:15px;
+      font-size:20px;
       color:var(--muted);
       margin-bottom:8px;
     }
@@ -124,18 +124,25 @@
 </head>
 <body>
 
+  <div class="top-logo">
+    <img src="https://raw.githubusercontent.com/avyllen/pba-frc-thing/main/lunalogo.png" alt="Luna Logo" width="315" height="250"" 
+         alt="Luna Logo" />
+  </div>
   <!-- title -->
-  <h1>Lunas Robotics </h1>
+  <!-- <h1>Lunas Robotics </h1> -->
 
   <div class="notice">
-<div class="title">THIS is a TEST! </div>
+<h1>THIS is a TEST! </h1>
   </div>
 
   <!-- header -->
-  <header>
     <!-- title and subtitle -->
     <div style="display:flex; flex-direction: column; justify-content: center;">
-      <div class="title">Lunas Robotics Scouting App</div>
+      <div class="title">
+      <h1>
+        Lunas Robotics Scouting App
+      </h1>
+      </div>
      <pre>
     Directions: 
     1. Enter scouting information
@@ -147,45 +154,48 @@
 
     </div>
 
-<!-- logo -->
+<!-- logo
     <div class="logo" style="margin-left:auto;">
 
-      <!-- img uses absolute link because its not appearing on github pages :C -->
+      img uses absolute link because its not appearing on github pages :C
       <img src="https://raw.githubusercontent.com/avyllen/pba-frc-thing/main/lunalogo.png" alt="Luna Logo" width="80" height="70">
     </div>
-  </header>
+  </header> 
 
   <!-- cards  -->
   <div class="cards-container">
 
     <!-- prematch -->
     <div class="card">
-      <h2>Pre-match</h2>
+      <h3>Pre-match</h3>
       <label>Scouter Name</label>
-      <input type="text" id="scouterName" placeholder="Your name">
+      <input type="text" id="scouterName" style="font-size: 20px;" placeholder="e.g D. Sasai">
       <label>Match Number</label>
-      <input type="number" id="matchNumber" placeholder="12">
+      <input type="number" id="matchNumber" style="font-size: 20px;" placeholder="e.g 12">
       <label>Team Number</label>
-      <input type="number" id="teamNumber" placeholder="3882">
-      <label>Starting Position</label>
-      <select id="startPosition">
+      <input type="number" id="teamNumber" style="font-size: 20px;" placeholder="e.g 3882">
+      <label for="label">Starting Position</label>
+      <select id="startPosition" style="font-size: 20px;">
           <option value="processor">Processor</option>
         <option value="middle">Middle</option>
       <option value="other">Other</option>
       </select>
       <label>No Show</label>
       <select id="noShow">
-      <option value="yes">Yes</option>
-        <option value="no">No</option>
+      <option value="no">No</option>
+        <option value="yes">Yes</option>
       <label class="toggle-label">
     </select>      
     </div>
 
 <!-- auto -->
     <div class="card">
-      <h2>Autonomous</h2>
-      <label class="toggle-label">
-        <input type="checkbox" id="autoMoved"> Moved
+      <h3>Autonomous</h3>
+      <label>Moved</label>
+      <select id="Moved">
+      <option value="no">No</option>
+      <option value="Yes">Yes</option>
+      </select>
       </label>
       <label>Coral L1 Scored</label>
       <input type="text" id="coralL1" placeholder="0">
@@ -204,7 +214,7 @@
     <!-- teleop -->
 
       <div class="card">
-      <h2>Teleop</h2>
+      <h3>Teleop</h3>
       <label>Pickup Location</label>
       <select id="pickupLocation">
         <option value="ground">Ground</option>
@@ -212,10 +222,18 @@
         <option value="both">Both</option>
         <option value="none">None</option>
       </select>
-      <label>Coral L1-L4 Scored</label>
-      <input type="text" id="coralTeleop" placeholder="0">
-      <label>Barge Algae Scored</label>
-      <input type="text" id="bargeTeleop" placeholder="0">
+      <label>Coral L1 Scored</label>
+      <input type="text" id="coralL1" placeholder="0">
+      <label>Coral L2 Scored</label>
+      <input type="text" id="coralL2" placeholder="0">
+      <label>Coral L3 Scored</label>
+      <input type="text" id="coralL3" placeholder="0">
+      <label>Coral L4 Scored</label>
+      <input type="text" id="coralL4" placeholder="0">
+      <label>Barge Scored</label>
+      <input type="text" id="bargeAuto" placeholder="0">
+      <label>Processor Scored</label>
+      <input type="text" id="processorAuto" placeholder="0">
       <label>Strategy</label>
       <select id="strategy">
         <option value="defense">Defense</option>
@@ -223,9 +241,9 @@
       </select>
     </div>
 
-    <!-- CARD 3: ENDGAME -->
+    <!-- endgame -->
     <div class="card">
-      <h2>Endgame</h2>
+      <h3>Endgame</h3>
       <label>End Position</label>
       <select id="endPosition">
         <option value="notParked">Not Parked</option>
@@ -244,11 +262,7 @@
           <option value="Yes">Yes</option>
       <label class="toggle-label">
       </select>
-    </div>
-
-    <!-- comments and buttons -->
-    <div class="card">
-      <h2>Comments</h2>
+      <h3>Comments</h3>
       <textarea id="comments" rows="9" placeholder="Type additional notes here"></textarea>
 
       <!-- Buttons -->
@@ -258,6 +272,8 @@
         <button class="primary" id="deleteEntry">Delete</button>
       </div>
     </div>
+    </div>
+
 
   </div> 
 </body>
