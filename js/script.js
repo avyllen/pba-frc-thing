@@ -131,7 +131,7 @@ document.getElementById("share").onclick = function() {
           recommendedAuto: entry.recommendedAuto
       };
 
-      fetch("https://script.google.com/macros/s/AKfycbwX6LbEh5EbYoxXRD1ua5_iVeAG9wxAYVxDxbIcBpMIWp16j8CFMoXHYk69ioz0SMoP/exec", {  
+      fetch("https://script.google.com/macros/s/AKfycbzVUuX25X2Rg6fsOQU0vIgEURIIoWGeEwe-cV7xNTIK_sF-EolEwDQvwZS7s7Ibizf2/exec", {  
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify(data)
