@@ -57,45 +57,93 @@ function assignRecAutos() {
 }
 
 // make csv
-function makeCSV(){
-assignRecAutos()
-var csv = "Scouter,Match,Team,StartPos,NoShow,Moved,CoralL1,CoralL2,CoralL3,CoralL4,Barge,Processor,Pickup,Strategy,End,RobotDied,Unstable,Comments,RecommendedAuto\n"
-for(var i=0;i<entries.length;i++){
-var e = entries[i]
-csv += [
-e.scouterName,
-e.matchNumber,
-e.teamNumber,
-e.startPosition,
-e.noShow,
-e.movedAuto,
-e.coralL1,
-e.coralL2,
-e.coralL3,
-e.coralL4,
-e.bargeAuto,
-e.processorAuto,
-e.pickupLocation,
-e.strategy,
-e.endPosition,
-e.robotDied,
-e.unstable,
-'"'+e.comments+'"',
-e.recommendedAuto || ""
-].join(",") + "\n"
+// function makeCSV(){
+// assignRecAutos()
+// var csv = "Scouter,Match,Team,StartPos,NoShow,Moved,CoralL1,CoralL2,CoralL3,CoralL4,Barge,Processor,Pickup,Strategy,End,RobotDied,Unstable,Comments,RecommendedAuto\n"
+// for(var i=0;i<entries.length;i++){
+// var e = entries[i]
+// csv += [
+// e.scouterName,
+// e.matchNumber,
+// e.teamNumber,
+// e.startPosition,
+// e.noShow,
+// e.movedAuto,
+// e.coralL1,
+// e.coralL2,
+// e.coralL3,
+// e.coralL4,
+// e.bargeAuto,
+// e.processorAuto,
+// e.pickupLocation,
+// e.strategy,
+// e.endPosition,
+// e.robotDied,
+// e.unstable,
+// '"'+e.comments+'"',
+// e.recommendedAuto || ""
+// ].join(",") + "\n"
 
-}
-return csv
-}
+// }
+// return csv
+
 
 // create the sheet
-document.getElementById("share").onclick = function(){
-var csvSheet = makeCSV()
-var blob = new Blob([csvSheet],{type:'text/csv'})
-var url = URL.createObjectURL(blob)
-var a = document.createElement("a")
-a.href = url
-a.download = "scouting_entries.csv"
-a.click()
-URL.revokeObjectURL(url)
+// document.getElementById("share").onclick = function(){
+// var csvSheet = makeCSV()
+// var blob = new Blob([csvSheet],{type:'text/csv'})
+// var url = URL.createObjectURL(blob)
+// var a = document.createElement("a")
+// a.href = url
+// a.download = "scouting_entries.csv"
+// a.click()
+// URL.revokeObjectURL(url)
+
+document.getElementById("share").onclick = function() {
+  assignRecAutos(); 
+  if(entries.length === 0) {
+      alert("No entries to share");
+      return;
+  }
+
+  // Send each entry one by one
+  entries.forEach(function(entry) {
+      const data = {
+          scouterName: entry.scouterName,
+          matchNumber: entry.matchNumber,
+          teamNumber: entry.teamNumber,
+          startPosition: entry.startPosition,
+          noShow: entry.noShow,
+          movedAuto: entry.movedAuto,
+          coralL1: entry.coralL1,
+          coralL2: entry.coralL2,
+          coralL3: entry.coralL3,
+          coralL4: entry.coralL4,
+          bargeAuto: entry.bargeAuto,
+          processorAuto: entry.processorAuto,
+          pickupLocation: entry.pickupLocation,
+          strategy: entry.strategy,
+          endPosition: entry.endPosition,
+          robotDied: entry.robotDied,
+          unstable: entry.unstable,
+          comments: entry.comments,
+          autoScore: entry.autoScore,
+          recommendedAuto: entry.recommendedAuto
+      };
+
+      fetch("https://script.google.com/macros/s/AKfycbzKpvzgBSXacc4Rlchb8s4rgbL1qEqMir9dN5J4dSE09lTjOroO1rxYicG7u2CnHs0T/exec", {  
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(data)
+      })
+      .then(() => {
+          console.log("Entry for match " + entry.matchNumber + "sent");
+      })
+      .catch((err) => {
+          console.error("Failed to send entry:", err);
+      });
+  });
+
+  alert("sent to Google Sheets");
+  entries = []; // clear after sending to prevent duplicates
 }
