@@ -102,48 +102,21 @@ function assignRecAutos() {
 document.getElementById("share").onclick = function() {
   assignRecAutos(); 
   if(entries.length === 0) {
-      alert("No entries to share");
-      return;
-  }
+    alert("No entries to share!");
+    return;
+}
 
-  // Send each entry one by one
-  entries.forEach(function(entry) {
-      const data = {
-          scouterName: entry.scouterName,
-          matchNumber: entry.matchNumber,
-          teamNumber: entry.teamNumber,
-          startPosition: entry.startPosition,
-          noShow: entry.noShow,
-          movedAuto: entry.movedAuto,
-          coralL1: entry.coralL1,
-          coralL2: entry.coralL2,
-          coralL3: entry.coralL3,
-          coralL4: entry.coralL4,
-          bargeAuto: entry.bargeAuto,
-          processorAuto: entry.processorAuto,
-          pickupLocation: entry.pickupLocation,
-          strategy: entry.strategy,
-          endPosition: entry.endPosition,
-          robotDied: entry.robotDied,
-          unstable: entry.unstable,
-          comments: entry.comments,
-          autoScore: entry.autoScore,
-          recommendedAuto: entry.recommendedAuto
-      };
+entries.forEach(function(entry) {
+    fetch("https://script.google.com/macros/s/AKfycbwaXPJUeB6HgrqWG7B6qFBGiONcIpHq4oepnY63N4tN_EmcxM_nYEJcGCjy2DgjQ-jP/exec", { // <-- must end in /exec
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(entry)
+    })
+    .then(resp => resp.json())
+    .then(data => console.log("Server response:", data))
+    .catch(err => console.error("Failed to send entry:", err));
+});
 
-      fetch("https://script.google.com/macros/s/AKfycbzVUuX25X2Rg6fsOQU0vIgEURIIoWGeEwe-cV7xNTIK_sF-EolEwDQvwZS7s7Ibizf2/exec", {  
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(data)
-      })
-      .then(() => {
-          console.log("Entry for match " + entry.matchNumber + "sent");
-      })
-      .catch((err) => {
-          console.error("Failed to send entry:", err);
-      });
-  });
-
-  alert("sent to Google Sheets");
-  entries = []; // clear after sending to prevent duplicates
+alert("All entries sent!");
+entries = [];
 }
