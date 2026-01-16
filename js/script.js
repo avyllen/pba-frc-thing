@@ -74,7 +74,7 @@ function assignRecAutos() {
 // e.coralL3,
 // e.coralL4,
 // e.bargeAuto,
-// e.processorAuto,
+// e.processorAuto,4
 // e.pickupLocation,
 // e.strategy,
 // e.endPosition,
@@ -131,7 +131,7 @@ document.getElementById("share").onclick = function() {
           recommendedAuto: entry.recommendedAuto
       };
 
-      fetch("https://script.google.com/macros/s/AKfycbzKpvzgBSXacc4Rlchb8s4rgbL1qEqMir9dN5J4dSE09lTjOroO1rxYicG7u2CnHs0T/exec", {  
+      fetch("https://script.google.com/macros/s/AKfycbwX6LbEh5EbYoxXRD1ua5_iVeAG9wxAYVxDxbIcBpMIWp16j8CFMoXHYk69ioz0SMoP/exec", {  
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify(data)
