@@ -23,13 +23,13 @@ entry.startPosition = document.getElementById("startPosition").value
 entry.noShow = document.getElementById("noShow").value
 entry.movedAuto = document.getElementById("Moved").value
 
-// coral score
-entry.coralL1 = Number(document.getElementById("coralL1").value || 0)
-entry.coralL2 = Number(document.getElementById("coralL2").value || 0)
-entry.coralL3 = Number(document.getElementById("coralL3").value || 0)
-entry.coralL4 = Number(document.getElementById("coralL4").value || 0)
-entry.bargeAuto = Number(document.getElementById("bargeAuto").value || 0)
-entry.processorAuto = Number(document.getElementById("processorAuto").value || 0)
+// coral score teleop
+entry.telecoralL1 = Number(document.getElementById("telecoralL1").value || 0)
+entry.telecoralL2 = Number(document.getElementById("telecoralL2").value || 0)
+entry.telecoralL3 = Number(document.getElementById("telecoralL3").value || 0)
+entry.telecoralL4 = Number(document.getElementById("telecoralL4").value || 0)
+entry.bargeTele = Number(document.getElementById("bargeTele").value || 0)
+entry.processorTele = Number(document.getElementById("processorTele").value || 0)
 
 // logs teleop/endgame
 entry.pickupLocation = document.getElementById("pickupLocation").value
