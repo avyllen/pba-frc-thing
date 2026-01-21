@@ -64,23 +64,27 @@ document.getElementById("share").onclick = function() {
       return;
   }
 
+
  const scriptURL = 'https://script.google.com/macros/s/AKfycbwiH9thSDMCkujJonn444dm_-PF7mq3424wckn3fXhclRBFgrtRYn-WxjETd3S4HiORgQ/exec'; //linking apps script/sheet to app
 
-     fetch(scriptURL, {
-        method: "POST",
-        mode: "no-cors", 
-        headers: {
-            "Content-Type": "application/json"
-        },
-        body: JSON.stringify(entry)
-    })
-    .then(() => {
-        // no cors to allow google sheets to connect w/ non-google app
-        alert("Success! Match " + entry.matchNumber + " for Team " + entry.teamNumber + " sent to sheet.");
-        
-    })
-     .catch(error => {
-         console.error('Error!', error.message);
-      alert("Error! Data was not sent.");
-   })
-  }
+ entries.forEach(function(entry) {
+      fetch(scriptURL, {
+    method: "POST",
+    mode: "no-cors", 
+    headers: {
+        "Content-Type": "application/json"
+    },
+    body: JSON.stringify(entry) 
+})
+.then(() => {
+    console.log("Sent match: " + entry.matchNumber);
+})
+.catch(error => {
+    console.error('Error!', error.message);
+});
+
+}); 
+
+alert("Sent " + entries.length + " matches to sheet!");
+entries = []; 
+}
