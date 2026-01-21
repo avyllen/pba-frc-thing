@@ -56,67 +56,22 @@ function assignRecAutos() {
 }
 }
 
-// make csv
-// function makeCSV(){
-// assignRecAutos()
-// var csv = "Scouter,Match,Team,StartPos,NoShow,Moved,CoralL1,CoralL2,CoralL3,CoralL4,Barge,Processor,Pickup,Strategy,End,RobotDied,Unstable,Comments,RecommendedAuto\n"
-// for(var i=0;i<entries.length;i++){
-// var e = entries[i]
-// csv += [
-// e.scouterName,
-// e.matchNumber,
-// e.teamNumber,
-// e.startPosition,
-// e.noShow,
-// e.movedAuto,
-// e.coralL1,
-// e.coralL2,
-// e.coralL3,
-// e.coralL4,
-// e.bargeAuto,
-// e.processorAuto,4
-// e.pickupLocation,
-// e.strategy,
-// e.endPosition,
-// e.robotDied,
-// e.unstable,
-// '"'+e.comments+'"',
-// e.recommendedAuto || ""
-// ].join(",") + "\n"
+const scriptURL = 'https://script.google.com/macros/s/AKfycbwiH9thSDMCkujJonn444dm_-PF7mq3424wckn3fXhclRBFgrtRYn-WxjETd3S4HiORgQ/exec'; //linking apps script/sheet to app
 
-// }
-// return csv
-
-
-// create the sheet
-// document.getElementById("share").onclick = function(){
-// var csvSheet = makeCSV()
-// var blob = new Blob([csvSheet],{type:'text/csv'})
-// var url = URL.createObjectURL(blob)
-// var a = document.createElement("a")
-// a.href = url
-// a.download = "scouting_entries.csv"
-// a.click()
-// URL.revokeObjectURL(url)
-
-document.getElementById("share").onclick = function() {
-  assignRecAutos(); 
-  if(entries.length === 0) {
-    alert("No entries to share!");
-    return;
-}
-
-entries.forEach(function(entry) {
-    fetch("https://script.google.com/macros/s/AKfycbwaXPJUeB6HgrqWG7B6qFBGiONcIpHq4oepnY63N4tN_EmcxM_nYEJcGCjy2DgjQ-jP/exec", { // <-- must end in /exec
+    fetch(scriptURL, {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
+        mode: "no-cors", 
+        headers: {
+            "Content-Type": "application/json"
+        },
         body: JSON.stringify(entry)
     })
-    .then(resp => resp.json())
-    .then(data => console.log("Server response:", data))
-    .catch(err => console.error("Failed to send entry:", err));
-});
-
-alert("All entries sent!");
-entries = [];
-}
+    .then(() => {
+        // no cors to allow google sheets to connect w/ non-google app
+        alert("Success! Match " + entry.matchNumber + " for Team " + entry.teamNumber + " sent to sheet.");
+        
+    })
+    .catch(error => {
+        console.error('Error!', error.message);
+        alert("Error! Data was not sent.");
+    });
