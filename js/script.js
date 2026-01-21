@@ -41,7 +41,7 @@ entry.unstable = document.getElementById("unstable").value
 // comments
 entry.comments = document.getElementById("comments").value
 
-// entry.autoScore = calcAutoScore(entry)
+entry.autoScore = calcAutoScore(entry)
 
 entries.push(entry)
 
