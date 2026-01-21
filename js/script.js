@@ -59,9 +59,9 @@ function assignRecAutos() {
 document.getElementById("share").onclick = function() {
   // alert("The Share button is definitely working");
   //   console.log("Entries currently saved:", entries); // is my share button working ?
-  // if (entries.length === 0) {
-  //     alert("Nothing to share! Save some matches first.");
-  //     return;
+  if (entries.length === 0) {
+      alert("Nothing to share! Save some matches first.");
+      return;
   }
 
  const scriptURL = 'https://script.google.com/macros/s/AKfycbwiH9thSDMCkujJonn444dm_-PF7mq3424wckn3fXhclRBFgrtRYn-WxjETd3S4HiORgQ/exec'; //linking apps script/sheet to app
@@ -83,3 +83,4 @@ document.getElementById("share").onclick = function() {
          console.error('Error!', error.message);
       alert("Error! Data was not sent.");
    })
+  }
