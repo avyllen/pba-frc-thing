@@ -10,10 +10,6 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bitcount+Prop+Single:wght@100..900&display=swap" rel="stylesheet">
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Mulish:ital,wght@0,200..1000;1,200..1000&display=swap" rel="stylesheet">
-
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Lunas Robotics Scouting App 2026test1</title>
@@ -102,14 +98,12 @@
 
 
     label{
-      font-family: Mulish;
       display:block;
       font-size:20px;
       color:var(--muted);
       margin-bottom:8px;
     }
     input, select, textarea{
-      font-family: Mulish;
       width:100%;
       padding:8px 10px;
       border-radius:8px;
@@ -158,11 +152,8 @@
 <body>
 
   <div class="top-logo">
-    <img src="https://raw.githubusercontent.com/avyllen/pba-frc-thing/main/lunalogo.png" alt="Luna Logo" width="315" height="250"" 
-         alt="Luna Logo" />
+    <img src="https://raw.githubusercontent.com/avyllen/pba-frc-thing/main/lunalogo.png" alt="Luna Logo" width="315" height="250"/>
   </div>
-  <!-- title -->
-  <!-- <h1>Lunas Robotics </h1> -->
 
   <div class="notice">
 <h1> ROUGH DRAFT
@@ -170,9 +161,7 @@
 <h4>created by Marie Avelyn Baptista</h4>
   </div>
 
-  <!-- header -->
-    <!-- title and subtitle -->
-    <div style="display:flex; flex-direction: column; justify-content: center;">
+  <div style="display:flex; flex-direction: column; justify-content: center;">
       <div class="title">
       <h1>
         Lunas Robotics Scouting App
@@ -185,94 +174,70 @@
       3. Once connected to LTE or Internet (outside of the arena),
       click "(figuring out how to sync data once connected )"<br></label>
       </label>
- 
     </div>
 
-<!-- logo
-    <div class="logo" style="margin-left:auto;">
-
-      img uses absolute link because its not appearing on github pages :C
-      <img src="https://raw.githubusercontent.com/avyllen/pba-frc-thing/main/lunalogo.png" alt="Luna Logo" width="80" height="70">
-    </div>
-  </header> 
-
-
-  cards  -->
   <div class="cards-container">
 
-    <!-- prematch -->
+    <!-- Pre-match -->
     <div class="card">
-      <h3>Pre-match</h3>
+      <h3>Pre-match Info</h3>
       <label>Scouter Name</label>
-      <input type="text" id="scouterName" style="font-size: 20px;" placeholder="e.g D. Sasai">
-      <label>Match Number</label>
-      <input type="number" id="matchNumber" style="font-size: 20px;" placeholder="e.g 12">
+      <input type="text" id="scouterName" placeholder="e.g D. Sasai">
       <label>Team Number</label>
-      <input type="number" id="teamNumber" style="font-size: 20px;" placeholder="e.g 3882">
-      <label for="label">Starting Position</label>
-      <select id="startPosition" style="font-size: 20px;">
-          <option value="processor" >Processor</option>
-        <option value="middle">Middle</option>
-      <option value="other">Other</option>
-      </select>
-      <label>No Show</label>
-      <select id="noShow" style="font-size: 20px;">
-      <option value="no">No</option>
-        <option value="yes">Yes</option>
-      <label class="toggle-label">
-    </select>      
+      <input type="number" id="teamNumber" placeholder="e.g 3882">
+      <label>Match Number</label>
+      <input type="number" id="matchNumber" placeholder="e.g 12">
     </div>
 
-<!-- auto -->
+    <!-- auto -->
     <div class="card">
       <h3>Autonomous</h3>
-      <label>Moved</label>
-      <select id="Moved" style="font-size: 20px;">
-      <option value="no">No</option>
-      <option value="Yes">Yes</option>
+      <label>Starting Position</label>
+      <select id="startPosition">
+        <option value="left">Left</option>
+        <option value="middle">Middle</option>
+        <option value="right">Right</option>
       </select>
-      </label>
-      <label>Coral L1 Scored</label>
-      <input type="text" id="coralL1" placeholder="0" style="font-size: 20px;">
-      <label>Coral L2 Scored</label>
-      <input type="text" id="coralL2" placeholder="0" style="font-size: 20px;">
-      <label>Coral L3 Scored</label>
-      <input type="text" id="coralL3" placeholder="0" style="font-size: 20px;">
-      <label>Coral L4 Scored</label>
-      <input type="text" id="coralL4" placeholder="0" style="font-size: 20px;">
-      <label>Barge Scored</label>
-      <input type="text" id="bargeAuto" placeholder="0" style="font-size: 20px;">
-      <label>Processor Scored</label>
-      <input type="text" id="processorAuto" placeholder="0" style="font-size: 20px;">
+      <label>Moved?</label>
+      <select id="moved">
+        <option value="yes">Yes</option>
+        <option value="no">No</option>
+      </select>
+      <label>Fuel Scored</label>
+      <input type="number" id="fuelAutoInput" placeholder="0">
+      <label>Climbed?</label>
+      <select id="climbed">
+        <option value="L1">L1</option>
+        <option value="L2">L2</option>
+        <option value="L3">L3</option>
+        <option value="No">No</option>
+      </select>
+      <label>Outpost Pickup?</label>
+      <select id="outpostPickup">
+        <option value="yes">Yes</option>
+        <option value="no">No</option>
+      </select>
+      <label>Ground Pickup?</label>
+      <select id="groundPickup">
+        <option value="yes">Yes</option>
+        <option value="no">No</option>
+      </select>
     </div>
 
     <!-- teleop -->
-
-      <div class="card">
+    <div class="card">
       <h3>Teleop</h3>
-      <label>Pickup Location</label>
-      <select id="pickupLocation" style="font-size: 20px;">
-        <option value="ground">Ground</option>
-        <option value="human">Human Player</option>
-        <option value="both">Both</option>
-        <option value="none">None</option>
+      <label>Fuel Scored</label>
+      <input type="number" id="fuelTeleopInput" placeholder="0">
+      <label>Vision?</label>
+      <select id="vision">
+        <option value="yes">Yes</option>
+        <option value="no">No</option>
       </select>
-      <label>Coral L1 Scored</label>
-      <input type="text" id="telecoralL1" placeholder="0" style="font-size: 20px;">
-      <label>Coral L2 Scored</label>
-      <input type="text" id="telecoralL2" placeholder="0" style="font-size: 20px;">
-      <label>Coral L3 Scored</label>
-      <input type="text" id="telecoralL3" placeholder="0" style="font-size: 20px;">
-      <label>Coral L4 Scored</label>
-      <input type="text" id="telecoralL4" placeholder="0" style="font-size: 20px;">
-      <label>Barge Scored</label>
-      <input type="text" id="bargeTele" placeholder="0" style="font-size: 20px;">
-      <label>Processor Scored</label>
-      <input type="text" id="processorTele" placeholder="0" style="font-size: 20px;">
-      <label>Strategy</label>
-      <select id="strategy" style="font-size: 20px;">
-        <option value="defense">Defense</option>
-        <option value="offense">Offense</option>
+      <label>Clears Trench?</label>
+      <select id="clearsTrench">
+        <option value="yes">Yes</option>
+        <option value="no">No</option>
       </select>
     </div>
 
@@ -280,34 +245,38 @@
     <div class="card">
       <h3>Endgame</h3>
       <label>End Position</label>
-      <select id="endPosition" style="font-size: 20px;">
-        <option value="notParked">Not Parked</option>
-        <option value="parked">Parked</option>
-        <option value="deepClimb">Deep Climb</option>
-        <option value="shallowClimb">Shallow Climb</option>
-      </select>
-     <label>Robot Died</label>
-      <select id="robotDied" style="font-size: 20px;">
-        <option value="no">No</option>
-        <option value="Yes">Yes</option>
-    </select>
-     <label>Unstable</label>
-        <select id="unstable" style="font-size: 20px;">
-          <option value="no">No</option>
-          <option value="Yes">Yes</option>
-      <label class="toggle-label">
-      </select>
-      <h3>Comments</h3>
-      <textarea id="comments" rows="5" placeholder="Type additional notes here" style="font-size: 20px;"></textarea>
+      <select id="endPosition">
+        <option value="L1">L1</option>
+        <option value="L2">L2</option>
+        <option value="L3">L3</option>
+        <option value="dnc">Did Not Climb</option>
 
-      <!-- Buttons -->
-      <div>
-        <button class="primary" id="saveEntry" style="font-size:15px;">Save Entry</button>
-        <button class="primary" id="share" style="font-size:15px;">Share</button>
-        <button class="primary" id="deleteEntry" style="font-size:15px;">Delete</button>
-      </div>
-</body>
-</html>
+
+      </select>
+      <label>Robot Died?</label>
+      <select id="robotDied">
+        <option value="no">No</option>
+        <option value="yes">Yes</option>
+      </select>
+      <label>Unstable?</label>
+      <select id="unstable">
+        <option value="no">No</option>
+        <option value="yes">Yes</option>
+      </select>
+      <label>Comments</label>
+      <textarea id="comments" rows="5" placeholder="Type additional notes here"></textarea>
+    </div>
+
+  </div>
+
+  <!-- Buttons -->
+  <div>
+    <button class="primary" id="saveEntry">Save Entry</button>
+    <button class="primary" id="share">Share</button>
+    <button class="primary" id="deleteEntry">Delete</button>
+  </div>
+
 <footer>lunas 3882 scout app created by marie avelyn baptista</footer>
 <script src="js/script.js"></script>
-<!-- will add honorable mentions somewhere -->
+</body>
+</html>
