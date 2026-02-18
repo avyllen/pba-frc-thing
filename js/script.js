@@ -24,6 +24,13 @@ entry.noShow = document.getElementById("noShow").value
 entry.movedAuto = document.getElementById("Moved").value
 
 // coral score teleop
+// entry.telecoralL1 = Number(document.getElementById("telecoralL1").value || 0)
+// entry.telecoralL2 = Number(document.getElementById("telecoralL2").value || 0)
+// entry.telecoralL3 = Number(document.getElementById("telecoralL3").value || 0)
+// entry.telecoralL4 = Number(document.getElementById("telecoralL4").value || 0)
+// entry.bargeTele = Number(document.getElementById("bargeTele").value || 0)
+// entry.processorTele = Number(document.getElementById("processorTele").value || 0)
+
 entry.telecoralL1 = Number(document.getElementById("telecoralL1").value || 0)
 entry.telecoralL2 = Number(document.getElementById("telecoralL2").value || 0)
 entry.telecoralL3 = Number(document.getElementById("telecoralL3").value || 0)
@@ -47,6 +54,7 @@ entries.push(entry)
 
 alert("Saved match "+entry.matchNumber+" team "+entry.teamNumber+" score "+entry.autoScore)
 }
+
 
 // assign recommended auto, figuring out the logic still so it will continue recommending 'auto 1'
 function assignRecAutos() {
