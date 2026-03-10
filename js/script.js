@@ -44,8 +44,6 @@ document.getElementById("saveEntry").onclick = function(){
 
   // Endgame
   entry.endPosition = document.getElementById("endPosition").value;
-  entry.robotDied = document.getElementById("robotDied").value;
-  entry.unstable = document.getElementById("unstable").value;
   entry.comments = document.getElementById("comments").value;
 
   // entry.autoScore = calcAutoScore(entry);
