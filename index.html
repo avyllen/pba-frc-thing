@@ -147,6 +147,45 @@
       color:var(--muted);
       margin-bottom:12px;
     }
+
+    .counter-group {
+  display: flex;
+  gap: 6px;
+  margin-bottom: 15px;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.05); /* Slight highlight for the area */
+  padding: 8px;
+  border-radius: 10px;
+}
+
+/* Styles the individual +1, +5, +10 buttons */
+.btn-qty {
+  flex: 1;
+  padding: 10px 15px;
+  background: #2d3748;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 6px;
+  color: white;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.btn-qty:active {
+  background: #4a5568; /* Visual click feedback */
+}
+
+/* Makes the number display look clean */
+#autoFuelScored, #teleFuelScored {
+  width: 50px;
+  background: transparent;
+  border: none;
+  font-size: 22px;
+  color: #fff;
+  text-align: center;
+  margin-bottom: 0; /* Overrides your general input margin */}
+
+
   </style>
 </head>
 <body>
@@ -171,8 +210,7 @@
       Directions:<br>
       1. Enter scouting information <br>
       2. Click save entry for each team <br>
-      3. Once connected to LTE or Internet (outside of the arena),
-      click "(figuring out how to sync data once connected )"<br></label>
+      3. Click share!
       </label>
     </div>
 
@@ -192,6 +230,16 @@
     <!-- auto -->
     <div class="card">
       <h3>Autonomous</h3>
+
+      <label>Fuel Scored (Auto)</label>
+<!-- <div style="display:flex; gap:5px; margin-bottom:10px;"> -->
+  <div class="counter-group">
+    <input type="number" id="autoFuel" placeholder="0">
+    <!-- <button type="button" class="btn-qty" onclick="fuelCount('autoFuel', 0, true)">0</button>
+    <button type="button" class="btn-qty" onclick="fuelCount('autoFuel', 1)">+1</button>
+    <button type="button" class="btn-qty" onclick="fuelCount('autoFuel', 5)">+5</button>
+    <button type="button" class="btn-qty" onclick="fuelCount('autoFuel', 10)">+10</button> -->
+  </div>
       <label>Starting Position</label>
       <select id="startPosition">
         <option value="left">Left</option>
@@ -203,8 +251,6 @@
         <option value="yes">Yes</option>
         <option value="no">No</option>
       </select>
-      <label>Fuel Scored</label>
-      <input type="number" id="fuelAutoInput" placeholder="0">
       <label>Climbed?</label>
       <select id="climbed">
         <option value="L1">L1</option>
@@ -221,14 +267,20 @@
       <select id="groundPickup">
         <option value="yes">Yes</option>
         <option value="no">No</option>
-      </select>
-    </div>
+      </select> 
+    </div> 
 
     <!-- teleop -->
     <div class="card">
       <h3>Teleop</h3>
-      <label>Fuel Scored</label>
-      <input type="number" id="fuelTeleopInput" placeholder="0">
+      <!-- <input type="text" id="teleFuel" placeholder="0"> -->
+
+  <!-- <button type="button" class="btn-qty" onclick="fuelCount('teleFuel', 0, true)">0</button>
+  <button type="button" class="btn-qty" onclick="fuelCount('teleFuel', 1)">+1</button>
+  <button type="button" class="btn-qty" onclick="fuelCount('teleFuel', 5)">+5</button>
+  <button type="button" class="btn-qty" onclick="fuelCount('teleFuel', 10)">+10</button> -->
+     <label>Fuel Scored</label>
+      <input type="number" id="teleFuel" value="0">
       <label>Vision?</label>
       <select id="vision">
         <option value="yes">Yes</option>
@@ -252,31 +304,28 @@
         <option value="dnc">Did Not Climb</option>
 
 
-      </select>
+      <!-- </select>
       <label>Robot Died?</label>
       <select id="robotDied">
         <option value="no">No</option>
         <option value="yes">Yes</option>
-      </select>
-      <label>Unstable?</label>
+      </select> -->
+      <!-- <label>Unstable?</label>
       <select id="unstable">
         <option value="no">No</option>
         <option value="yes">Yes</option>
-      </select>
-      <label>Comments</label>
+      </select> -->
+      <label>Comments</label> 
       <textarea id="comments" rows="5" placeholder="Type additional notes here"></textarea>
-    </div>
-
-  </div>
-
-  <!-- Buttons -->
+        <!-- Buttons -->
   <div>
     <button class="primary" id="saveEntry">Save Entry</button>
     <button class="primary" id="share">Share</button>
     <button class="primary" id="deleteEntry">Delete</button>
   </div>
+    </div>
 
-<footer>lunas 3882 scout app created by marie avelyn baptista</footer>
+<footer>Lunas 3882 Scouting App made by Marie Baptista</footer>
 <script src="js/script.js"></script>
 </body>
 </html>

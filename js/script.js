@@ -1,98 +1,76 @@
 var entries = [];
 
-// calculate auto score
-function calcAutoScore(entry){
-var score = 0
-score += Number(entry.coralL1) * 1
-score += Number(entry.coralL2) * 2
-score += Number(entry.coralL3) * 3
-score += Number(entry.coralL4) * 4
-score += Number(entry.bargeAuto) * 4
-score += Number(entry.processorAuto) * 3
-if(entry.movedAuto==="Yes") score += 2
-return score
-}
 
-// save 
+// function fuelCount(targetId, amount, isReset = false) {
+//   var element = document.getElementById(targetId);
+//   if (isReset) {
+//     element.value = 0;
+//   } else {
+//     var currentVal = parseInt(element.value) || 0;
+//     element.value = currentVal + amount;
+//   }
+// }
+
+
+// function calcAutoScore(entry){
+//   var score = 0;
+//   score += entry.autoFuel;
+//   if(entry.moved === "yes") score += 2;
+//   if(entry.climbedAuto === "L1") score += 15; 
+//   return score;
+// }
+
+
 document.getElementById("saveEntry").onclick = function(){
-var entry = {}
-entry.scouterName = document.getElementById("scouterName").value
-entry.matchNumber = Number(document.getElementById("matchNumber").value)
-entry.teamNumber = Number(document.getElementById("teamNumber").value)
-entry.startPosition = document.getElementById("startPosition").value
-entry.noShow = document.getElementById("noShow").value
-entry.movedAuto = document.getElementById("Moved").value
+  var entry = {};
 
-// coral score teleop
-// entry.telecoralL1 = Number(document.getElementById("telecoralL1").value || 0)
-// entry.telecoralL2 = Number(document.getElementById("telecoralL2").value || 0)
-// entry.telecoralL3 = Number(document.getElementById("telecoralL3").value || 0)
-// entry.telecoralL4 = Number(document.getElementById("telecoralL4").value || 0)
-// entry.bargeTele = Number(document.getElementById("bargeTele").value || 0)
-// entry.processorTele = Number(document.getElementById("processorTele").value || 0)
+  // Pre-match
+  entry.scouterName = document.getElementById("scouterName").value;
+  entry.matchNumber = Number(document.getElementById("matchNumber").value);
+  entry.teamNumber = Number(document.getElementById("teamNumber").value);
 
-entry.telecoralL1 = Number(document.getElementById("telecoralL1").value || 0)
-entry.telecoralL2 = Number(document.getElementById("telecoralL2").value || 0)
-entry.telecoralL3 = Number(document.getElementById("telecoralL3").value || 0)
-entry.telecoralL4 = Number(document.getElementById("telecoralL4").value || 0)
-entry.bargeTele = Number(document.getElementById("bargeTele").value || 0)
-entry.processorTele = Number(document.getElementById("processorTele").value || 0)
+  // Auto 
+  entry.startPosition = document.getElementById("startPosition").value;
+  entry.moved = document.getElementById("moved").value;
+  entry.autoFuel = Number(document.getElementById("autoFuel").value);
+  entry.climbedAuto = document.getElementById("climbed").value;
+  entry.outpostPickup = document.getElementById("outpostPickup").value;
+  entry.groundPickup = document.getElementById("groundPickup").value;
 
-// logs teleop/endgame
-entry.pickupLocation = document.getElementById("pickupLocation").value
-entry.strategy = document.getElementById("strategy").value
-entry.endPosition = document.getElementById("endPosition").value
-entry.robotDied = document.getElementById("robotDied").value
-entry.unstable = document.getElementById("unstable").value
+  // Teleop
+  entry.teleFuel = Number(document.getElementById("teleFuel").value);
+  entry.vision = document.getElementById("vision").value;
+  entry.clearsTrench = document.getElementById("clearsTrench").value;
 
-// comments
-entry.comments = document.getElementById("comments").value
+  // Endgame
+  entry.endPosition = document.getElementById("endPosition").value;
+  entry.robotDied = document.getElementById("robotDied").value;
+  entry.unstable = document.getElementById("unstable").value;
+  entry.comments = document.getElementById("comments").value;
 
-entry.autoScore = calcAutoScore(entry)
+  // entry.autoScore = calcAutoScore(entry);
 
-entries.push(entry)
+  // Save to the list
+  entries.push(entry);
 
-alert("Saved match "+entry.matchNumber+" team "+entry.teamNumber+" score "+entry.autoScore)
-}
-
-
-// assign recommended auto, figuring out the logic still so it will continue recommending 'auto 1'
-function assignRecAutos() {
-    // loop through all entries
-    for(var i = 0; i < entries.length; i++){
-      entries[i].recommendedAuto = "Auto 1"
-}
-}
+  console.log("Database updated:", entries);
+  alert("Saved match " + entry.matchNumber + " team " + entry.teamNumber);
+  
+  // Clean the counters for the next scout
+  document.getElementById("autoFuel").value = 0;
+  document.getElementById("teleFuel").value = 0;
 
 document.getElementById("share").onclick = function() {
-  // alert("The Share button is definitely working");
-  //   console.log("Entries currently saved:", entries); // is my share button working ?
-  if (entries.length === 0) {
-      alert("Nothing to share! Save some matches first.");
-      return;
-  }
+  var lastEntry = entries[entries.length - 1];
+  var webAppUrl = "https://script.google.com/a/macros/hawaii.edu/s/AKfycbxEOo_mlVPgBMz-GzrKpwvt4zLPA0dcCFa2wEq1ad3bW4rfpTjl10Fa52ROQgW7RwuQLw/exec";
 
-
- const scriptURL = 'https://script.google.com/macros/s/AKfycbwiH9thSDMCkujJonn444dm_-PF7mq3424wckn3fXhclRBFgrtRYn-WxjETd3S4HiORgQ/exec'; //linking apps script/sheet to app
-
- entries.forEach(function(entry) {
-      fetch(scriptURL, {
+  fetch(webAppUrl, {
     method: "POST",
-    mode: "no-cors", 
-    headers: {
-        "Content-Type": "application/json"
-    },
-    body: JSON.stringify(entry) 
-})
-.then(() => {
-    console.log("Sent match: " + entry.matchNumber);
-})
-.catch(error => {
-    console.error('Error!', error.message);
-});
-
-}); 
-
-alert("Sent " + entries.length + " matches to sheet!");
-entries = []; 
-}
+    mode: "no-cors",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(lastEntry)
+  })
+  .then(() => alert("Sent to sheet!"))
+  .catch(error => console.error("Error:", error));
+};
+};
