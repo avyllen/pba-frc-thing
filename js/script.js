@@ -61,7 +61,7 @@ document.getElementById("saveEntry").onclick = function(){
 
 document.getElementById("share").onclick = function() {
   var lastEntry = entries[entries.length - 1];
-  var webAppUrl = "https://script.google.com/a/macros/hawaii.edu/s/AKfycbxEOo_mlVPgBMz-GzrKpwvt4zLPA0dcCFa2wEq1ad3bW4rfpTjl10Fa52ROQgW7RwuQLw/exec";
+  var webAppUrl = "https://script.google.com/a/macros/hawaii.edu/s/AKfycbzsNc4d9R05fh9_oS6CYUfvmSXK0UlcoyVHkQx2jd0MnXxEpYHUPZhNmgME6o9Q4yPEHA/exec";
 
   fetch(webAppUrl, {
     method: "POST",
