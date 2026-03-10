@@ -57,6 +57,7 @@ document.getElementById("saveEntry").onclick = function(){
   // Clean the counters for the next scout
   document.getElementById("autoFuel").value = 0;
   document.getElementById("teleFuel").value = 0;
+};
 
 document.getElementById("share").onclick = function() {
   var lastEntry = entries[entries.length - 1];
@@ -70,5 +71,4 @@ document.getElementById("share").onclick = function() {
   })
   .then(() => alert("Sent to sheet!"))
   .catch(error => console.error("Error:", error));
-};
 };
