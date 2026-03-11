@@ -61,7 +61,7 @@ document.getElementById("saveEntry").onclick = function(){
 
 document.getElementById("share").onclick = function() {
   var lastEntry = entries[entries.length - 1];
-  var webAppUrl = "https://script.google.com/macros/s/AKfycbyUKpZYHoqBbKYGpaX9rV2MYbv2OmAXVOIk052r5rHcm1CBX4nFqWtz0m0CIsnvu8jihA/exec";
+  var webAppUrl = "https://script.google.com/macros/s/AKfycbySj6OEmBYva6-5Vx2m922pOC6Fvt8Bmznsk4-N4KrasvxaHPxgpxmmJp85mY0msINu/exec";
   // tweaking
 
   fetch(webAppUrl, {
