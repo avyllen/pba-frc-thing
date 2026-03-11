@@ -61,7 +61,7 @@ document.getElementById("saveEntry").onclick = function(){
 
 document.getElementById("share").onclick = function() {
   var lastEntry = entries[entries.length - 1];
-  var webAppUrl = "https://script.google.com/a/macros/hawaii.edu/s/AKfycbzsNc4d9R05fh9_oS6CYUfvmSXK0UlcoyVHkQx2jd0MnXxEpYHUPZhNmgME6o9Q4yPEHA/exec";
+  var webAppUrl = "https://script.google.com/a/macros/hawaii.edu/s/AKfycbwlOaYeGQ8cpczdTTqQ9RxIFUJPlOe3kUZE3LqZdt-OO26GNfLKj1Z-69XegfNjrm8ZDA/exec;
 
   fetch(webAppUrl, {
     method: "POST",
@@ -71,4 +71,5 @@ document.getElementById("share").onclick = function() {
   })
   .then(() => alert("Sent to sheet!"))
   .catch(error => console.error("Error:", error));
+  
 };
