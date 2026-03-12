@@ -43,7 +43,7 @@ document.getElementById("saveEntry").onclick = function(){
   entry.clearsTrench = document.getElementById("clearsTrench").value;
 
   // Endgame
-  entry.endPosition = document.getElementById("endPosition").value;
+  entry.teleClimb = document.getElementById("endPosition").value;
   entry.comments = document.getElementById("comments").value;
 
   // entry.autoScore = calcAutoScore(entry);
