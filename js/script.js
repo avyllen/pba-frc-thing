@@ -30,10 +30,10 @@ document.getElementById("saveEntry").onclick = function(){
   entry.teamNumber = Number(document.getElementById("teamNumber").value);
 
   // Auto 
-  entry.startPosition = document.getElementById("startPosition").value;
+  entry.autoPosition = document.getElementById("startPosition").value;
   entry.moved = document.getElementById("moved").value;
   entry.autoFuel = Number(document.getElementById("autoFuel").value);
-  entry.climbedAuto = document.getElementById("climbed").value;
+  entry.autoClimb = document.getElementById("climbed").value;
   entry.outpostPickup = document.getElementById("outpostPickup").value;
   entry.groundPickup = document.getElementById("groundPickup").value;
 
